@@ -1,0 +1,10 @@
+theme = Catppuccin Macchiato
+background-opacity=1.0
+window-theme=dark
+font-thicken = true
+macos-titlebar-style = native
+keybind = cmd+grave_accent=toggle_quick_terminal
+#macos-icon = custom-style
+#macos-icon-frame = beige
+#macos-icon-ghost-color = #096310
+#macos-icon-screen-color = #131c1f

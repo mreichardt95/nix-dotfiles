@@ -1,5 +1,0 @@
-XSym
-0034
-9db9dc5ff98e2b17e01046b9f94c4090
-../../docs/highlighters/pattern.md
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

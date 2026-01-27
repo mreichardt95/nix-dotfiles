@@ -24,7 +24,7 @@
       l = "ls -lhrt";
       cd = "z";
       vim = "nvim";
-      nr = "sudo nixos-rebuild switch --flake ~/Projects/dotfiles";
+      nr = "nh os switch ~/Projects/dotfiles";
     };
     oh-my-zsh = {
       enable = true;

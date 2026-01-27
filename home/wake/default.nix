@@ -9,6 +9,7 @@ in
   imports = [
     ./shell.nix
     ./programs.nix
+    ./tmux.nix
   ];
 
   home.username = "wake";
@@ -49,7 +50,6 @@ in
     nodejs
     lazygit
     yamllint
-    tmux
     claude-code
     python3
     unzip

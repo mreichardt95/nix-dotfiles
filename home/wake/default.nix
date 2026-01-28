@@ -74,5 +74,6 @@ in
     freelens-bin
     kubectl
     xorg.xrandr
+    davinci-resolve
   ];
 }

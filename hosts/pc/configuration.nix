@@ -1,13 +1,18 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
   ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
+  # Bootloader - Secure Boot setup
+  # https://nix-community.github.io/lanzaboote/introduction.html
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
 
   # Networking
   networking.hostName = "pc";
@@ -160,6 +165,7 @@
     veracrypt
     nh
     sshfs
+    sbctl
   ];
 
   system.stateVersion = "25.11";

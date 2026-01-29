@@ -14,6 +14,12 @@
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -21,6 +27,7 @@
       self,
       nixpkgs,
       home-manager,
+      lanzaboote,
       ...
     }:
     let
@@ -41,6 +48,7 @@
             outputs = self;
           };
           modules = [
+            lanzaboote.nixosModules.lanzaboote
             ./hosts/pc
             home-manager.nixosModules.home-manager
             {

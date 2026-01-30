@@ -150,18 +150,12 @@
 
   # PC-specific packages
   environment.systemPackages = with pkgs; [
-    neofetch
     tailscale
-    ghostty
     libva-utils
     pciutils
-    foot
-    kitty
-    dbeaver-bin
     heroic
     plasma5Packages.qt5ct
     qt6Packages.qt6ct
-    unrar
     veracrypt
     nh
     sshfs

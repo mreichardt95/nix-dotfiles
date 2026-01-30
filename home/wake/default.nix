@@ -75,5 +75,12 @@ in
     kubectl
     xorg.xrandr
     davinci-resolve
+    neofetch
+    ghostty
+    foot
+    kitty
+    dbeaver-bin
+    unrar
+    rusty-path-of-building
   ];
 }

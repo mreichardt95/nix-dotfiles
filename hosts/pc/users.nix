@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   users.users.wake = {
@@ -12,6 +12,9 @@
       "render"
       "docker"
       "libvirtd"
+    ];
+    packages = with pkgs; [
+      kdePackages.kate
     ];
   };
 

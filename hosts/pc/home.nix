@@ -10,6 +10,8 @@ in
     shell
     development
     desktop
+    media
+    gaming
   ];
 
   home.username = "wake";

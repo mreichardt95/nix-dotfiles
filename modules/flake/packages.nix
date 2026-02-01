@@ -4,6 +4,6 @@
   perSystem =
     { pkgs, system, ... }:
     {
-      packages = import ../../pkgs { inherit pkgs; };
+      packages = import ./pkgs { inherit pkgs; };
     };
 }

@@ -18,7 +18,7 @@
         kdePackages.dolphin
         xorg.xrandr
         davinci-resolve
-        neofetch
+        fastfetch
         unrar
         rusty-path-of-building
         rofi

@@ -12,6 +12,7 @@ in
     desktop
     media
     gaming
+    messengers
   ];
 
   home.username = "wake";

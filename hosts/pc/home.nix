@@ -15,6 +15,10 @@ in
   home.username = "wake";
   home.homeDirectory = "/home/wake";
 
+  home.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATH = "~/.steam/root/compatibilitytools.d";
+  };
+
   # PC-specific: Hyprland autostart on TTY1
   programs.zsh.profileExtra = ''
     if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then

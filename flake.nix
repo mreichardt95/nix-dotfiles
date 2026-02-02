@@ -36,7 +36,7 @@
       imports = [
         inputs.flake-parts.flakeModules.modules
         (inputs.import-tree ./modules)
-        ./hosts/pc.nix
+        ./hosts/pc/default.nix
       ];
     };
 }

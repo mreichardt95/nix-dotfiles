@@ -16,6 +16,9 @@
         quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
       };
 
+      # Programs
+      programs.firefox.enable = true;
+
       # Plasma + SDDM
       services.displayManager.sddm.enable = true;
       services.displayManager.sddm.autoNumlock = true;
@@ -34,6 +37,12 @@
       # Fonts
       fonts.packages = with pkgs; [
         nerd-fonts.jetbrains-mono
+      ];
+
+      # PC-specific packages
+      environment.systemPackages = with pkgs; [
+        plasma5Packages.qt5ct
+        qt6Packages.qt6ct
       ];
     };
 }

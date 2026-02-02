@@ -15,6 +15,7 @@
           options = "--delete-older-than 7d";
         };
       };
+      system.stateVersion = "25.11";
 
       # Nixpkgs
       nixpkgs = {
@@ -25,6 +26,8 @@
           inputs.self.overlays.stable-packages
         ];
       };
+      # Globally Enable zsh
+      programs.zsh.enable = true;
 
       # Base system packages
       environment.systemPackages = with pkgs; [
@@ -32,6 +35,7 @@
         wget
         htop
         git
+        nh
       ];
     };
 }

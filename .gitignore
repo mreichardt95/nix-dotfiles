@@ -1,0 +1,31 @@
+# Nix build outputs
+  result
+  result-*
+
+  # Editor swap/backup files
+  *.swp
+  *.swo
+  *~
+  *.bak
+
+  # Neovim generated files
+  config/nvim/.netrwhist
+  config/nvim/plugin/packer_compiled.lua
+  config/nvim/undo/
+  config/nvim/backup/
+
+  # Secrets (never commit these)
+  *.key
+  *.pem
+  *.secret
+  .env
+  .env.local
+
+  # OS files
+  .DS_Store
+  Thumbs.db
+
+  # direnv
+  .direnv/
+  .envrc.local
+

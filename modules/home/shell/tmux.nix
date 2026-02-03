@@ -1,8 +1,8 @@
-{ ... }:
+_:
 
 {
-  flake.modules.homeManager.shell = 
-    { config, lib, pkgs, ... }:
+  flake.modules.homeManager.shell =
+    { pkgs, ... }:
 
     {
       # Tmux

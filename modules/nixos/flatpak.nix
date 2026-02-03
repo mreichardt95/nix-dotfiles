@@ -1,9 +1,6 @@
-{ ... }:
-{
-  flake.modules.nixos.flatpak =
-    { ... }:
-    {
-      # Flatpak
-      services.flatpak.enable = true;
-    };
+_: {
+  flake.modules.nixos.flatpak = _: {
+    # Flatpak
+    services.flatpak.enable = true;
+  };
 }

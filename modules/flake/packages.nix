@@ -1,8 +1,8 @@
-{ inputs, ... }:
+_:
 
 {
   perSystem =
-    { pkgs, system, ... }:
+    { pkgs, ... }:
     {
       packages = import ./pkgs { inherit pkgs; };
     };

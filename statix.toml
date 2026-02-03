@@ -1,0 +1,3 @@
+# Statix configuration
+# W20: Repeated keys in attrsets - this is a style preference, not an error
+# disabled = ["repeated_keys"]

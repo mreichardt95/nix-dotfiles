@@ -1,15 +1,19 @@
-{ ... }:
-{
+_: {
   flake.modules.nixos.secureboot =
     { lib, pkgs, ... }:
 
     {
-      # Secure Boot setup with lanzaboote
-      boot.loader.systemd-boot.enable = lib.mkForce false;
-      boot.loader.efi.canTouchEfiVariables = true;
-      boot.lanzaboote = {
-        enable = true;
-        pkiBundle = "/var/lib/sbctl";
+      boot = {
+        # Secure Boot setup with lanzaboote
+        loader = {
+          systemd-boot.enable = lib.mkForce false;
+          efi.canTouchEfiVariables = true;
+        };
+        lanzaboote = {
+          enable = true;
+          pkiBundle = "/var/lib/sbctl";
+        };
+
       };
 
       # Secure Boot cli

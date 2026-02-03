@@ -4,11 +4,11 @@
   flake.overlays = {
     additions = final: _prev: import ./pkgs { pkgs = final; };
 
-    modifications = final: prev: { };
+    modifications = _final: _prev: { };
 
     stable-packages = final: _prev: {
       stable = import inputs.nixpkgs-stable {
-        system = final.system;
+        inherit (final) system;
         config.allowUnfree = true;
       };
     };

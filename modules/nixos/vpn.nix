@@ -1,15 +1,17 @@
-{ ... }:
-{
+_: {
   flake.modules.nixos.vpn =
     { pkgs, ... }:
     {
-      # VPN
-      services.mullvad-vpn.enable = true;
-      services.mullvad-vpn.package = pkgs.mullvad-vpn;
+      services = {
+        # VPN
+        mullvad-vpn.enable = true;
+        mullvad-vpn.package = pkgs.mullvad-vpn;
 
-      # Tailscale
-      services.tailscale.enable = true;
-      services.resolved.enable = true;
+        # Tailscale
+        tailscale.enable = true;
+        resolved.enable = true;
+
+      };
 
       environment.systemPackages = with pkgs; [
         tailscale

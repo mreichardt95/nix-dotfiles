@@ -18,12 +18,13 @@ in
     gaming
     messengers
   ];
+  home = {
+    username = "wake";
+    homeDirectory = "/home/wake";
 
-  home.username = "wake";
-  home.homeDirectory = "/home/wake";
-
-  home.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATH = "~/.steam/root/compatibilitytools.d";
+    sessionVariables = {
+      STEAM_EXTRA_COMPAT_TOOLS_PATH = "~/.steam/root/compatibilitytools.d";
+    };
   };
 
   # PC-specific: Hyprland autostart on TTY1

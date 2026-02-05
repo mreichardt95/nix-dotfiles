@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
   };
@@ -37,6 +42,7 @@
         inputs.flake-parts.flakeModules.modules
         (inputs.import-tree ./modules)
         ./hosts/pc/default.nix
+        ./hosts/mac/default.nix
       ];
     };
 }

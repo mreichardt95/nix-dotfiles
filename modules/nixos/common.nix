@@ -36,6 +36,7 @@
         htop
         git
         nh
+        dig
       ];
     };
 }

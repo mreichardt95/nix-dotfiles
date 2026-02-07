@@ -22,7 +22,6 @@ _:
 
       environment.systemPackages = with pkgs; [
         heroic
-        mangohud
         bottles
         protonup-ng
       ];

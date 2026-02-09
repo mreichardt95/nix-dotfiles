@@ -28,7 +28,7 @@ _:
           vram = true;
           vram_color = "AD64C1";
           gpu_temp = true;
-          gpu_power = true;
+          # gpu_power = true;
           gpu_color = "2E9762";
           cpu_text = "CPU";
           cpu_stats = true;
@@ -37,7 +37,7 @@ _:
           cpu_load_color = "FFFFFF,FFAA7F,CC0000";
           cpu_mhz = true;
           cpu_temp = true;
-          cpu_power = true;
+          # cpu_power = true;
           cpu_color = "2E97CB";
           ram = true;
           ram_color = "C26693";

@@ -17,6 +17,7 @@ in
     media
     gaming
     messengers
+    browser
   ];
   home = {
     username = "wake";

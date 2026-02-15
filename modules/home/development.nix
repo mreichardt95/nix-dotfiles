@@ -44,7 +44,10 @@ _:
       };
 
       # Git
-      programs.git.enable = true;
+      programs.git = {
+        enable = true;
+        lfs.enable = true;
+      };
 
       # Direnv
       programs.direnv = {

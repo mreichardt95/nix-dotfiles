@@ -35,6 +35,7 @@
         wget
         htop
         git
+        git-lfs
         nh
         dig
       ];

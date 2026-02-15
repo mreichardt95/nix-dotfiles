@@ -8,6 +8,7 @@
       inputs.lanzaboote.nixosModules.lanzaboote
       inputs.self.modules.nixos.hardware-pc
       inputs.self.modules.nixos.secureboot
+      inputs.self.modules.nixos.binfmt
       inputs.self.modules.nixos.locale
       inputs.self.modules.nixos.wake
       inputs.self.modules.nixos.desktop

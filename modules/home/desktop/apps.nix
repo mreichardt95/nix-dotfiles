@@ -11,7 +11,7 @@ _:
       home.packages = with pkgs; [
         discord
         kdePackages.dolphin
-        xorg.xrandr
+        xrandr
         fastfetch
         unrar
         rofi

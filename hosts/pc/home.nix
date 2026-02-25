@@ -5,11 +5,12 @@
 }:
 
 let
-  dotfiles = "${config.home.homeDirectory}/Projects/dotfiles";
+  dotfiles = "${config.home.homeDirectory}/Projects/nix-dotfiles";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 in
 {
   imports = with inputs.self.modules.homeManager; [
+    options
     common
     shell
     development
@@ -19,6 +20,13 @@ in
     messengers
     browser
   ];
+
+  myconf = {
+    isWork = false;
+    isDarwin = false;
+    dotfilesPath = dotfiles;
+  };
+
   home = {
     username = "wake";
     homeDirectory = "/home/wake";

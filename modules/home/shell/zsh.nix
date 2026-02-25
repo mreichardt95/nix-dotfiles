@@ -5,10 +5,11 @@ _:
     {
       config,
       pkgs,
+      lib,
       ...
     }:
     let
-      dotfiles = "${config.home.homeDirectory}/Projects/dotfiles";
+      dotfiles = config.myconf.dotfilesPath;
       create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
     in
     {
@@ -36,12 +37,18 @@ _:
           [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
         '';
 
-        shellAliases = {
-          l = "ls -lhrt";
-          cd = "z";
-          vim = "nvim";
-          nr = "nh os switch ~/Projects/dotfiles";
-        };
+        shellAliases =
+          {
+            l = "ls -lhrt";
+            cd = "z";
+            vim = "nvim";
+          }
+          // (
+            if pkgs.stdenv.isDarwin then
+              { nr = "darwin-rebuild switch --flake ~/Projects/scs-nix-dotfiles"; }
+            else
+              { nr = "nh os switch ~/Projects/nix-dotfiles"; }
+          );
 
         oh-my-zsh = {
           enable = true;

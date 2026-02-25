@@ -2,41 +2,49 @@ _:
 
 {
   flake.modules.homeManager.development =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
     let
-      dotfiles = "${config.home.homeDirectory}/Projects/dotfiles";
+      dotfiles = config.myconf.dotfilesPath;
       create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
     in
     {
-      # Neovim
-      home.packages = with pkgs; [
-        neovim
-        ripgrep
-        nil
-        nixfmt
-        nixpkgs-fmt
-        gcc
-        nodejs
-        lazygit
-        yamllint
-        claude-code
-        python3
-        unzip
-        go
-        cargo
-        (pkgs.writeShellApplication {
-          name = "ns";
-          runtimeInputs = with pkgs; [
-            fzf
-            nix-search-tv
-          ];
-          excludeShellChecks = [ "SC2016" ];
-          text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-        })
-        freelens-bin
-        kubectl
-        dbeaver-bin
-      ];
+      home.packages =
+        with pkgs;
+        [
+          neovim
+          ripgrep
+          nil
+          nixfmt
+          nixpkgs-fmt
+          gcc
+          nodejs
+          lazygit
+          yamllint
+          claude-code
+          python3
+          unzip
+          go
+          cargo
+        ]
+        ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+          (pkgs.writeShellApplication {
+            name = "ns";
+            runtimeInputs = with pkgs; [
+              fzf
+              nix-search-tv
+            ];
+            excludeShellChecks = [ "SC2016" ];
+            text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+          })
+          freelens-bin
+          kubectl
+          dbeaver-bin
+        ];
 
       xdg.configFile."nvim" = {
         source = create_symlink "${dotfiles}/config/nvim/";

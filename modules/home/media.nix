@@ -7,6 +7,7 @@ _:
       home.packages = with pkgs; [
         vlc
         davinci-resolve
+        makemkv
       ];
     };
 }

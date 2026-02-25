@@ -5,7 +5,7 @@
 }:
 
 let
-  dotfiles = "${config.home.homeDirectory}/Projects/nix-dotfiles";
+  dotfiles = "${config.home.homeDirectory}/Projects/dotfiles";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 in
 {

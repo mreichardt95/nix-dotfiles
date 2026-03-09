@@ -6,6 +6,24 @@ _:
     {
       home.packages = with pkgs; [
         rusty-path-of-building
+        (awakened-poe-trade.overrideAttrs (_: {
+          version = "3.28.102";
+          src = fetchurl {
+            url = "https://github.com/SnosMe/awakened-poe-trade/releases/download/v3.28.102/Awakened-PoE-Trade-3.28.102.AppImage";
+            hash = "sha256-tej1rjkrpAXmQ8ZzvlAuxHkMGAuRpPqg1TlBoWhorIE=";
+          };
+          postFixup = ''
+            makeWrapper ${lib.getExe electron} $out/bin/awakened-poe-trade \
+              --add-flags $out/share/awakened-poe-trade/resources/app.asar \
+              --add-flags "--ozone-platform=x11" \
+              --prefix LD_LIBRARY_PATH : "${
+                lib.makeLibraryPath [
+                  libxtst
+                  libxt
+                ]
+              }"
+          '';
+        }))
       ];
 
       programs.mangohud = {

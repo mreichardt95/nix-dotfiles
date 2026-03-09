@@ -6,6 +6,7 @@
     system = "x86_64-linux";
     modules = [
       inputs.lanzaboote.nixosModules.lanzaboote
+      inputs.self.modules.nixos.kernel
       inputs.self.modules.nixos.hardware-pc
       inputs.self.modules.nixos.secureboot
       inputs.self.modules.nixos.binfmt

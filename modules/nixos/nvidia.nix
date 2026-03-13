@@ -51,12 +51,7 @@ _:
         options nvidia NVreg_UsePageAttributeTable=1
       '';
 
-      # Capture crash dumps on hard lockups for future diagnosis.
       boot.kernelParams = [
-        "crashkernel=256M"
-        "iommu=pt" # Reduce DMA-related GPU hangs
-        "pcie_aspm=off" # Disable PCIe power saving that conflicts with Blackwell
-        # "pcie_port_pm=off" # Disabled: may cause black screen
         "nvidia-drm.fbdev=1"
       ];
       systemd.services.nvidia-powerd.enable = false;

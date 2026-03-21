@@ -19,6 +19,7 @@ in
     gaming
     messengers
     browser
+    ai
   ];
 
   myconf = {

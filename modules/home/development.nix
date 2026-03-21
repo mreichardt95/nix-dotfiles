@@ -25,7 +25,6 @@ _:
           nodejs
           lazygit
           yamllint
-          claude-code
           python3
           unzip
           go

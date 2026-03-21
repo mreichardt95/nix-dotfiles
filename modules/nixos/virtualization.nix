@@ -8,7 +8,7 @@ _:
 
       programs.virt-manager.enable = true;
       # Mask broken libvirt unit that hardcodes /usr/bin/sh (doesn't exist on NixOS)
-      systemd.services.virt-secret-init-encryption.enable = false;
+      # systemd.services.virt-secret-init-encryption.enable = false;
 
       virtualisation.libvirtd = {
         enable = true;

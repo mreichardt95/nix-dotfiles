@@ -30,7 +30,7 @@ _:
       hardware.nvidia = {
         nvidiaPersistenced = true; # Keep GPU initialized, avoid repeated GSP init cycles
         modesetting.enable = true;
-        powerManagement.enable = false; # RTD3 is broken on RTX 5000 series (open-gpu-kernel-modules#882)
+        powerManagement.enable = true; # Save/restore GPU state across suspend/resume to prevent Xid 13 errors
         powerManagement.finegrained = false;
         open = true; # Required for Blackwell (RTX 5080)
         nvidiaSettings = true;

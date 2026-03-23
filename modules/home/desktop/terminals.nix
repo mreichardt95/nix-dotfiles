@@ -27,18 +27,13 @@ _:
 
       xdg.configFile."ghostty/config".text = ''
         command = ${tmuxCmd}
-        theme = Catppuccin Macchiato
+        theme = catppuccin-macchiato
         background-opacity=1.0
         window-theme=dark
         font-thicken = true
         macos-titlebar-style = native
         keybind = cmd+grave_accent=toggle_quick_terminal
       '';
-
-      xdg.configFile."ghostty/themes" = {
-        source = create_symlink "${dotfiles}/config/ghostty/themes/";
-        recursive = true;
-      };
 
       xdg.configFile."foot" = lib.mkIf (!pkgs.stdenv.isDarwin) {
         source = create_symlink "${dotfiles}/config/foot/";

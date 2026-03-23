@@ -34,6 +34,8 @@ _:
         ${lib.optionalString pkgs.stdenv.isDarwin "font-size = 14"}
         macos-titlebar-style = native
         keybind = cmd+grave_accent=toggle_quick_terminal
+        key-repeat-delay = 100
+        key-repeat-interval = 30
       '';
 
       xdg.configFile."foot" = lib.mkIf (!pkgs.stdenv.isDarwin) {

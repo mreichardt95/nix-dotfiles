@@ -31,7 +31,7 @@ _:
         background-opacity=1.0
         window-theme=dark
         font-thicken = true
-        font-size = 14
+        ${lib.optionalString pkgs.stdenv.isDarwin "font-size = 14"}
         macos-titlebar-style = native
         keybind = cmd+grave_accent=toggle_quick_terminal
       '';

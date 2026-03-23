@@ -27,7 +27,7 @@ _:
 
       xdg.configFile."ghostty/config".text = ''
         command = ${tmuxCmd}
-        theme = catppuccin-macchiato
+        theme = Catppuccin Macchiato
         background-opacity=1.0
         window-theme=dark
         font-thicken = true

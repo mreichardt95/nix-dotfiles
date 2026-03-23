@@ -11,6 +11,10 @@ _:
     let
       dotfiles = config.myconf.dotfilesPath;
       create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+      tmuxCmd =
+        if pkgs.stdenv.isDarwin
+        then "/bin/bash -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'"
+        else "${pkgs.tmux}/bin/tmux new-session -A -s main";
     in
     {
       home.packages =
@@ -22,7 +26,7 @@ _:
         ];
 
       xdg.configFile."ghostty/config".text = ''
-        command = ${pkgs.tmux}/bin/tmux new-session -A -s main
+        command = ${tmuxCmd}
         theme = Catppuccin Macchiato
         background-opacity=1.0
         window-theme=dark

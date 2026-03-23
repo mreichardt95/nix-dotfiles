@@ -43,7 +43,7 @@ _:
         }
         // (
           if pkgs.stdenv.isDarwin then
-            { nr = "sudo darwin-rebuild switch --flake ~/Projects/scs-nix-dotfiles"; }
+            { nr = "nh darwin switch ~/Projects/scs-nix-dotfiles"; }
           else
             { nr = "nh os switch ~/Projects/dotfiles"; }
         );

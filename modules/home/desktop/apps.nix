@@ -21,6 +21,7 @@ _:
           fastfetch
           unrar
           rofi
+          thunderbird
         ];
 
         xdg.configFile."rofi" = {

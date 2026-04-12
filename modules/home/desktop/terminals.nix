@@ -12,9 +12,10 @@ _:
       dotfiles = config.myconf.dotfilesPath;
       create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
       tmuxCmd =
-        if pkgs.stdenv.isDarwin
-        then "/bin/bash -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'"
-        else "${pkgs.tmux}/bin/tmux new-session -A -s main";
+        if pkgs.stdenv.isDarwin then
+          "/bin/bash -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'"
+        else
+          "${pkgs.tmux}/bin/tmux new-session -A -s main";
     in
     {
       home.packages =

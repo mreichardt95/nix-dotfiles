@@ -7,6 +7,7 @@ _:
       home.packages = with pkgs; [
         claude-code
         opencode
+        lmstudio
       ];
     };
 }

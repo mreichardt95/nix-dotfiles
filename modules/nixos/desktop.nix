@@ -44,7 +44,7 @@
 
       # PC-specific packages
       environment.systemPackages = with pkgs; [
-        plasma5Packages.qt5ct
+        libsForQt5.qt5ct
         qt6Packages.qt6ct
       ];
     };

@@ -17,6 +17,7 @@ _:
         home.packages = with pkgs; [
           discord
           kdePackages.dolphin
+          kdePackages.filelight
           xrandr
           fastfetch
           unrar

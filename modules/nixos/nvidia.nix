@@ -35,13 +35,6 @@ _:
         open = true; # Required for Blackwell (RTX 5080)
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
-        # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        #   version = "580.119.02";
-        #   sha256_64bit = "sha256-gCD139PuiK7no4mQ0MPSr+VHUemhcLqerdfqZwE47Nc=";
-        #   openSha256 = "sha256-l3IQDoopOt0n0+Ig+Ee3AOcFCGJXhbH1Q1nh1TEAHTE=";
-        #   settingsSha256 = "sha256-sI/ly6gNaUw0QZFWWkMbrkSstzf0hvcdSaogTUoTecI=";
-        #   persistencedSha256 = "sha256-j74m3tAYON/q8WLU9Xioo3CkOSXfo1CwGmDx/ot0uUo=";
-        # };
       };
 
       # Stability tweaks for RTX 5080 (Blackwell) with 580.x driver.

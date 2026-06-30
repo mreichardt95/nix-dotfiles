@@ -5,12 +5,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-25.11";
 
-    # Pinned to last nixpkgs rev that shipped tailscale 1.96.5.
-    # 1.98.0 (current unstable) breaks tailnet DNS after suspend/resume and
-    # mullvad up/down cycles; 1.98.1 has an upstream fix (src_valid_mark) but
-    # hasn't reached nixpkgs yet. Drop this input once unstable is >= 1.98.1.
-    nixpkgs-tailscale-pin.url = "github:NixOS/nixpkgs/b12141ef619e0a9c1c84dc8c684040326f27cdcc";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,7 +16,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.0.0";
+      url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -13,6 +13,19 @@
         openldap = prev.openldap.overrideAttrs (_: {
           doCheck = false;
         });
+      }
+      // {
+        # patool 4.0.5's test suite fails on this nixpkgs revision due to a
+        # `file`/libmagic mime-detection mismatch (bzip2 vs tar). Pulled in via
+        # bottles. Disable its checks across all python versions.
+        pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+          (_pyfinal: pyprev: {
+            patool = pyprev.patool.overridePythonAttrs (_: {
+              doCheck = false;
+              doInstallCheck = false;
+            });
+          })
+        ];
       };
 
     stable-packages = final: _prev: {

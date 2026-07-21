@@ -20,6 +20,10 @@
       # Nixpkgs
       nixpkgs = {
         config.allowUnfree = true;
+        # electron_40 is EOL in nixpkgs but is the last Electron that runs the
+        # Awakened PoE Trade overlay without eating clicks (41+ regressed the
+        # X11 input passthrough). See modules/home/gaming/awakened-poe-trade.nix.
+        config.permittedInsecurePackages = [ "electron-40.10.5" ];
         overlays = [
           inputs.self.overlays.additions
           inputs.self.overlays.modifications

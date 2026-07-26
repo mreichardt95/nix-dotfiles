@@ -13,14 +13,21 @@ _:
         # 43, so this is not a 41-only bug. Pinned to the last-known-good 40,
         # which is EOL/insecure -> permittedInsecurePackages in nixos/common.nix.
         #
-        # Also force X11 (XWayland): Electron 39+ auto-detects Wayland via
-        # XDG_SESSION_TYPE and ignores --ozone-platform placed after the app path.
-        # As a native Wayland client the overlay steals focus from PoE.
+        # Render the overlay on X11 (XWayland): the overlay-window native module
+        # needs an X11 window, and --ozone-platform placed *before* the app path
+        # (unlike stock, which puts it after and is ignored) forces it there.
         # https://github.com/SnosMe/awakened-poe-trade/issues/1659
+        #
+        # Do NOT also `--set XDG_SESSION_TYPE x11`. Price-check copies the hovered
+        # item by injecting Ctrl+C into PoE; XDG_SESSION_TYPE=x11 forces that down
+        # the XTEST path, which KWin-Wayland silently drops for XWayland clients
+        # (verified: XTestFakeKeyEvent not delivered even to the focused window,
+        # while XSendEvent is). Leaving it at the real `wayland` keeps the
+        # injection path that worked pre-July. Ozone (rendering) and
+        # XDG_SESSION_TYPE (input backend) are independent knobs.
         (awakened-poe-trade.overrideAttrs (_: {
           postFixup = ''
             makeWrapper ${lib.getExe electron_40} $out/bin/awakened-poe-trade \
-              --set XDG_SESSION_TYPE x11 \
               --add-flags "--ozone-platform=x11" \
               --add-flags $out/share/awakened-poe-trade/resources/app.asar \
               --prefix LD_LIBRARY_PATH : "${

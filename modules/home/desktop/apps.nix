@@ -15,7 +15,7 @@ _:
       in
       {
         home.packages = with pkgs; [
-          discord
+          # discord
           kdePackages.dolphin
           kdePackages.filelight
           xrandr

@@ -54,7 +54,7 @@ _:
             hash = "sha256-mjtdM8tEi+Gvf3B4gopEEqlNfp89+J4w1Jy+dyWtig8=";
           };
           postFixup = ''
-            makeWrapper ${lib.getExe electron} $out/bin/awakened-poe-trade \
+            makeWrapper ${lib.getExe electron_40} $out/bin/awakened-poe-trade \
               --add-flags "--ozone-platform=x11" \
               --add-flags $out/share/awakened-poe-trade/resources/app.asar \
               --prefix LD_LIBRARY_PATH : "${

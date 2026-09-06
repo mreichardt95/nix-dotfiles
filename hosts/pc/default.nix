@@ -21,6 +21,7 @@
       inputs.self.modules.nixos.flatpak
       inputs.self.modules.nixos.sshfs
       inputs.self.modules.nixos.networking
+      inputs.self.modules.nixos.ai
       { home-manager.users.wake = ./home.nix; }
     ];
   };

@@ -54,7 +54,16 @@ _: {
         };
       };
 
-      swapDevices = [ ];
+      # OOM cushion for large ML workloads (e.g. ComfyUI holding ~44GB of
+      # LTX-Video weights in RAM). Overflow only — swappiness kept low so the
+      # kernel prefers RAM and only spills under real pressure.
+      swapDevices = [
+        {
+          device = "/swapfile";
+          size = 32 * 1024; # MiB → 32 GB
+        }
+      ];
+      boot.kernel.sysctl."vm.swappiness" = 10;
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

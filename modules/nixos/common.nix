@@ -28,6 +28,8 @@
           inputs.self.overlays.additions
           inputs.self.overlays.modifications
           inputs.self.overlays.stable-packages
+          # Exposes comfyui / comfy-ui-cuda (and rocm/xpu variants).
+          inputs.comfyui.overlays.default
         ];
       };
       # Globally Enable zsh

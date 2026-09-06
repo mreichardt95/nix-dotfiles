@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # ComfyUI is not in nixpkgs (pulls Python deps nixpkgs lacks; see
+    # NixOS/nixpkgs#227006). This flake ships pinned, tested torch/CUDA builds,
+    # so intentionally does NOT follow our nixpkgs to keep those pins working.
+    comfyui.url = "github:utensils/comfyui-nix";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
   };

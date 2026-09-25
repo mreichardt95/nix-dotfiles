@@ -23,7 +23,11 @@
     # ComfyUI is not in nixpkgs (pulls Python deps nixpkgs lacks; see
     # NixOS/nixpkgs#227006). This flake ships pinned, tested torch/CUDA builds,
     # so intentionally does NOT follow our nixpkgs to keep those pins working.
-    comfyui.url = "github:utensils/comfyui-nix";
+    # Pinned: the next rev moves to cuda 13.2 / nvshmem 3.6.5, and nixpkgs builds
+    # NVSHMEM from source (tests + examples, 9 GPU arches) with no binary cache
+    # anywhere (unfree, so Hydra skips it) - a multi-hour rebuild for nothing we
+    # use. Unpin when comfyui-nix ships something we actually want.
+    comfyui.url = "github:utensils/comfyui-nix/3ca0df0ecc7bb6a05fea6df2d57c85b31d790a71";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";

@@ -14,6 +14,15 @@
           dates = "weekly";
           options = "--delete-older-than 7d";
         };
+        # Defaults (max-jobs = auto = 16, cores = 0 = all) let 16 derivations
+        # each spawn 16 compiler threads on 16 hardware threads. The 16x
+        # oversubscription adds no throughput, thrashes the X3D L3, and starves
+        # timeout-based test suites (jupyter-server's websocket tests fail this
+        # way under a comfy-ui rebuild). 4x4 saturates the CPU exactly.
+        settings = {
+          max-jobs = 4;
+          cores = 4;
+        };
       };
       system.stateVersion = "25.11";
 

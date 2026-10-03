@@ -27,7 +27,14 @@ _: {
           luks.devices."luks-55964a8d-3971-4f9c-8d10-97df28e39c6f".device =
             "/dev/disk/by-uuid/55964a8d-3971-4f9c-8d10-97df28e39c6f";
         };
-        kernelModules = [ "kvm-amd" ];
+        # DIMM temperature sensors: firmware claims the FCH SMBus via ACPI, so
+        # i2c_piix4 refuses to bind ("ACPI: OSL: Resource conflict"). lax lets it
+        # bind; piix4 then instantiates the DDR5 SPD hubs for spd5118.
+        kernelParams = [ "acpi_enforce_resources=lax" ];
+        kernelModules = [
+          "kvm-amd"
+          "spd5118"
+        ];
         extraModulePackages = [ ];
       };
 

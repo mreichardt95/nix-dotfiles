@@ -12,6 +12,8 @@ _:
       };
 
       programs.gamemode.enable = true;
+      # gamemode's pkexec helpers (governor, split_lock_mitigate) require group membership
+      users.users.wake.extraGroups = [ "gamemode" ];
 
       services.sunshine = {
         enable = true;

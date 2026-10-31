@@ -3,14 +3,11 @@ _:
 {
   flake.modules.homeManager.desktop =
     {
-      config,
       pkgs,
       lib,
       ...
     }:
     let
-      dotfiles = config.myconf.dotfilesPath;
-      create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
       tmuxCmd =
         if pkgs.stdenv.isDarwin then
           "/bin/bash -l -c '${pkgs.tmux}/bin/tmux new-session -A -s main'"
@@ -22,7 +19,6 @@ _:
         with pkgs;
         lib.optionals (!pkgs.stdenv.isDarwin) [
           ghostty
-          foot
           kitty
         ];
 
@@ -37,9 +33,15 @@ _:
         keybind = cmd+grave_accent=toggle_quick_terminal
       '';
 
-      xdg.configFile."foot" = lib.mkIf (!pkgs.stdenv.isDarwin) {
-        source = create_symlink "${dotfiles}/config/foot/";
-        recursive = true;
-      };
+      # Upstream unit uses Type=notify-reload; ghostty sometimes sends READY=1
+      # before installing its SIGUSR2 handler, so systemd refuses startup.
+      xdg.configFile."systemd/user/app-com.mitchellh.ghostty.service.d/override.conf" =
+        lib.mkIf (!pkgs.stdenv.isDarwin)
+          {
+            text = ''
+              [Service]
+              Type=dbus
+            '';
+          };
     };
 }

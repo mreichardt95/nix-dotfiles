@@ -1,20 +1,10 @@
-{ inputs, ... }:
+_:
 
 {
   flake.modules.nixos.desktop =
     { pkgs, ... }:
     {
       programs = {
-        # Hyprland
-        hyprland = {
-          enable = true;
-          xwayland.enable = true;
-        };
-        dms-shell = {
-          enable = true;
-          systemd.enable = false;
-          quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
-        };
         firefox.enable = true;
       };
 

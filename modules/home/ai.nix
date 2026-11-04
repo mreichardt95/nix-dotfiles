@@ -21,6 +21,7 @@ _:
     {
       home.packages = with pkgs; [
         claude-code
+        wl-clipboard # claude-code reads pasted images via wl-paste
         opencode
         lmstudio
         comfy-ui

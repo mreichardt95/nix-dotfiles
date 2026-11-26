@@ -16,6 +16,7 @@ _:
       home.packages =
         with pkgs;
         [
+          gh
           neovim
           ripgrep
           nil

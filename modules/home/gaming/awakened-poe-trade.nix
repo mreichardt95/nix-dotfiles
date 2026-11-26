@@ -18,7 +18,14 @@ _:
       '';
 
       home.packages = with pkgs; [
-        rusty-path-of-building
+        # cargo-setup-hook now forces AWS_LC_SYS_USE_SYSTEM / ZSTD_SYS_USE_PKG_CONFIG,
+        # but the package doesn't provide those libs. Drop once nixpkgs adds them.
+        (rusty-path-of-building.overrideAttrs (o: {
+          buildInputs = o.buildInputs ++ [
+            aws-lc
+            zstd
+          ];
+        }))
         # Pin Electron instead of tracking rolling `pkgs.electron`.
         # APT 3.28.103 (Mar 2026) worked on Electron 40; Electron 41+ regressed
         # the overlay's X11 input passthrough so the override-redirect overlay
@@ -45,13 +52,13 @@ _:
         # injection path that worked pre-July. Ozone (rendering) and
         # XDG_SESSION_TYPE (input backend) are independent knobs.
         #
-        # Bump to 3.29.102 ahead of the nixpkgs pin catching up:
+        # Bump to 3.30.102 ahead of the nixpkgs pin catching up:
         # https://github.com/NixOS/nixpkgs/pull/546461
         (awakened-poe-trade.overrideAttrs (_: {
-          version = "3.29.102";
+          version = "3.30.102";
           src = fetchurl {
-            url = "https://github.com/SnosMe/awakened-poe-trade/releases/download/v3.29.102/Awakened-PoE-Trade-3.29.102.AppImage";
-            hash = "sha256-mjtdM8tEi+Gvf3B4gopEEqlNfp89+J4w1Jy+dyWtig8=";
+            url = "https://github.com/SnosMe/awakened-poe-trade/releases/download/v3.30.102/Awakened-PoE-Trade-3.30.102.AppImage";
+            hash = "sha256-h/hTWuuvFvHX+lvFSWc8rAd5Eeylp3eZBDzWkWu7zGM=";
           };
           postFixup = ''
             makeWrapper ${lib.getExe electron_40} $out/bin/awakened-poe-trade \

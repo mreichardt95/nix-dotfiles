@@ -43,9 +43,10 @@ _:
         }
         // (
           if pkgs.stdenv.isDarwin then
-            { nr = "nh darwin switch ~/Projects/scs-nix-dotfiles"; }
+            # rom (nh >= 4.5) disables its live build graph when TMUX is set.
+            { nr = "env -u TMUX nh darwin switch ~/Projects/scs-nix-dotfiles"; }
           else
-            { nr = "nh os switch ~/Projects/dotfiles"; }
+            { nr = "env -u TMUX nh os switch ~/Projects/dotfiles"; }
         );
 
         oh-my-zsh = {

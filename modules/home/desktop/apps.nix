@@ -16,6 +16,7 @@ _:
         fastfetch
         unrar
         thunderbird
+        btop-cuda
       ];
 
       # Ark's built-in "Extract here" hard-codes autoSubfolder, which renames an
